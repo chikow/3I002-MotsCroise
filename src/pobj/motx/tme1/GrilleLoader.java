@@ -8,14 +8,12 @@ import java.io.PrintWriter;
 public class GrilleLoader {
 
 	/**
-	 * Permet de charger une grille depuis un fichier au format "grl". La
-	 * première ligne du fichier contient deux entiers : nblig nbcol qui donnent
-	 * la taille de la grille. Les lignes suivantes donnent le contenu de la
-	 * grille, '*' désignant une case pleine, ' ' une case vide, ou une lettre
-	 * 'a-z'.
+	 * Permet de charger une grille depuis un fichier au format "grl". La première
+	 * ligne du fichier contient deux entiers : nblig nbcol qui donnent la taille de
+	 * la grille. Les lignes suivantes donnent le contenu de la grille, '*'
+	 * désignant une case pleine, ' ' une case vide, ou une lettre 'a-z'.
 	 * 
-	 * @param path
-	 *            chemin d'accès au fichier grl
+	 * @param path chemin d'accès au fichier grl
 	 * @return une grille chargée depuis le fichier ou null en cas de problème
 	 *         d'accès au fichier.
 	 */
@@ -80,7 +78,7 @@ public class GrilleLoader {
 	public static void saveGrille(Grille g, String path) {
 		try {
 			PrintWriter pw = new PrintWriter(path);
-			pw.print(serialize(g,true));
+			pw.print(serialize(g, true));
 			pw.close();
 		} catch (IOException e) {
 			System.err.println("Save Grille raised an IOException :" + e);
@@ -92,15 +90,14 @@ public class GrilleLoader {
 	 * Fournit une représentation de la grille comme une String. L'affichage est
 	 * contrôlé par le style, cf. méthode setStyle().
 	 * 
-	 * @param g
-	 *            une grille
+	 * @param g une grille
 	 * @return une String représentant g.
 	 */
 	public static String serialize(Grille g, boolean isGrlFormat) {
 		StringBuilder sb = new StringBuilder();
 
 		String espace;
-		if (! isGrlFormat)
+		if (!isGrlFormat)
 			espace = " "; // version aérée
 		else
 			espace = ""; // version grl
@@ -123,7 +120,7 @@ public class GrilleLoader {
 		}
 
 		// post face
-		if (! isGrlFormat) {
+		if (!isGrlFormat) {
 			for (int i = 0; i < g.nbCol(); i++)
 				sb.append("===");
 			sb.append("\n");

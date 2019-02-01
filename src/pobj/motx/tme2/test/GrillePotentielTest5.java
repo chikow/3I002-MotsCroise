@@ -59,14 +59,14 @@ public class GrillePotentielTest5 {
 
 		assertEquals(2, gp.getContraintes().size());
 
-		int[] expected = { 5916, 5688 , 5916};
+		int[] expected = { 5916, 5688, 5916 };
 
 		testNombrePot(gp, expected);
 
 		System.out.println("Succès test GrillePotentiel : easy.");
 
 	}
-	
+
 	@Test
 	public void testHard() {
 

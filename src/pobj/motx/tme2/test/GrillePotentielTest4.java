@@ -34,10 +34,7 @@ public class GrillePotentielTest4 {
 
 		assertTrue(!gp.isDead());
 
-		
-
-		int[][] expected = { {0,2,2,0},
-				{1,2,2,4}};
+		int[][] expected = { { 0, 2, 2, 0 }, { 1, 2, 2, 4 } };
 
 		checkContraintes(gp, expected);
 
@@ -47,19 +44,19 @@ public class GrillePotentielTest4 {
 
 	private void checkContraintes(GrillePotentiel gp, int[][] expected) {
 		List<IContrainte> exp = new ArrayList<>();
-		for (int []e : expected) {
+		for (int[] e : expected) {
 			// (m1,c1,m2,c2) dans cet ordre.
 			exp.add(new CroixContrainte(e[0], e[1], e[2], e[3]));
 		}
-		
+
 		assertEquals(expected.length, gp.getContraintes().size());
-		
+
 		for (IContrainte c : gp.getContraintes()) {
 			// penser à définir public boolean equals(Object o) dans CroixContrainte.
 			assertTrue(exp.contains(c));
 		}
 	}
-	
+
 	@Test
 	public void testMedium() {
 
@@ -80,15 +77,8 @@ public class GrillePotentielTest4 {
 //		for (IContrainte c: gp.getContraintes()) {
 //			System.out.println(c+",");
 //		}
-		int[][] expected = { {0,0,3,0},
-				{0,2,4,0},
-				{0,4,5,0},
-				{1,0,3,2},
-				{1,2,4,2},
-				{1,4,5,2},
-				{2,0,3,4},
-				{2,2,4,4},
-				{2,4,5,4}};
+		int[][] expected = { { 0, 0, 3, 0 }, { 0, 2, 4, 0 }, { 0, 4, 5, 0 }, { 1, 0, 3, 2 }, { 1, 2, 4, 2 },
+				{ 1, 4, 5, 2 }, { 2, 0, 3, 4 }, { 2, 2, 4, 4 }, { 2, 4, 5, 4 } };
 
 		checkContraintes(gp, expected);
 
@@ -96,7 +86,6 @@ public class GrillePotentielTest4 {
 
 	}
 
-	
 	@Test
 	public void testEnonce() {
 
@@ -114,19 +103,9 @@ public class GrillePotentielTest4 {
 
 		assertTrue(!gp.isDead());
 
-		int[][] expected = { {0,1,8,0},
-				{1,1,11,1},
-				{2,0,8,3},
-				{2,2,9,1},
-				{2,10,11,3},
-				{3,4,11,5},
-				{4,0,7,4},
-				{4,2,8,6},
-				{4,4,9,4},
-				{5,0,9,5},
-				{5,6,10,0},
-				{5,8,11,7},
-				{6,4,10,2}};
+		int[][] expected = { { 0, 1, 8, 0 }, { 1, 1, 11, 1 }, { 2, 0, 8, 3 }, { 2, 2, 9, 1 }, { 2, 10, 11, 3 },
+				{ 3, 4, 11, 5 }, { 4, 0, 7, 4 }, { 4, 2, 8, 6 }, { 4, 4, 9, 4 }, { 5, 0, 9, 5 }, { 5, 6, 10, 0 },
+				{ 5, 8, 11, 7 }, { 6, 4, 10, 2 } };
 
 		checkContraintes(gp, expected);
 

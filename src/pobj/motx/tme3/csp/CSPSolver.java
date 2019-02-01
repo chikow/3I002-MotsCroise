@@ -32,9 +32,8 @@ public class CSPSolver {
 				System.out.println("Essai valeur suivante.");
 			}
 		}
-		System.out.println("Backtrack sur variable "+ vi);
+		System.out.println("Backtrack sur variable " + vi);
 		return next;
 	}
-
 
 }

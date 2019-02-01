@@ -24,7 +24,7 @@ public class GrilleSolverTest {
 
 		GrillePlaces grille = new GrillePlaces(gr);
 		GrillePotentiel gp = new GrillePotentiel(grille, gut);
-		
+
 		// System.out.println(gp);
 		// assertTrue(! gp.isDead());
 
@@ -33,11 +33,12 @@ public class GrilleSolverTest {
 
 		// solver.setStrat(new StratFirst());
 		// solver.setStrat(new StratMin());
-		
+
 		long timestamp = System.currentTimeMillis();
 		ICSP solution = solver.solve(problem);
 
-		System.out.println("Solution \n" + solution + " \nCalculée en "+ (System.currentTimeMillis() - timestamp) +" ms " );
+		System.out.println(
+				"Solution \n" + solution + " \nCalculée en " + (System.currentTimeMillis() - timestamp) + " ms ");
 	}
 
 }
