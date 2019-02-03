@@ -50,6 +50,10 @@ public class GrillePlaces {
 		return places.size()-h;
 	}
 
+	/**
+	 * @param lig
+	 * @return les cases qui constitue une ligne 
+	 */
 	private List<Case> getLig(int lig) {
 		List<Case> ligne = new ArrayList<Case>();
 		for (int i = 0; i < g.nbCol(); i++) {
@@ -58,6 +62,10 @@ public class GrillePlaces {
 		return ligne;
 	}
 
+	/**
+	 * @param col
+	 * @return les cases qui constitue une colonne
+	 */
 	private List<Case> getCol(int col) {
 		List<Case> coll = new ArrayList<Case>();
 		for (int i = 0; i < g.nbLig(); i++) {
@@ -66,6 +74,11 @@ public class GrillePlaces {
 		return coll;
 	}
 
+	/**
+	 * @param cases
+	 * Cherche les mots dans la liste de cases fournie
+	 * Ajoute les emplacements de mot dans place
+	 */
 	private void cherchePlaces(List<Case> cases) {
 		Emplacement e = new Emplacement();
 		for (Case c : cases) {

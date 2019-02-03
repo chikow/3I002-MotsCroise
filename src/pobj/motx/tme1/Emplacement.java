@@ -20,6 +20,9 @@ public class Emplacement {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		String mot = "";
 		for (int i = 0; i < lettres.size(); i++) {

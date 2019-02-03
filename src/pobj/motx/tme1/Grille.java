@@ -1,9 +1,18 @@
 package pobj.motx.tme1;
 
+/**
+ * @author LAOUER Walid
+ *
+ */
 public class Grille {
-	private Case Case[][];
+	private Case Case[][] ;
 	private int h, l;
 
+	/**
+	 * @param hauteur
+	 * @param largeur
+	 * Constructeur d'une Grille : Matrice de case
+	 */
 	public Grille(int hauteur, int largeur) {
 		h = hauteur;
 		l = largeur;
@@ -22,18 +31,30 @@ public class Grille {
 			return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		return GrilleLoader.serialize(this, false);
 	}
 
+	/**
+	 * @return la hauteur de la grille
+	 */
 	public int nbLig() {
 		return h;
 	}
 
+	/**
+	 * @return la longueur de la grille
+	 */
 	public int nbCol() {
 		return l;
 	}
 
+	/**
+	 * @return Une copie de la grille courante
+	 */
 	public Grille copy() {
 		Grille Grille2 = new Grille(nbLig(), nbCol());
 		for (int i = 0; i < nbLig(); i++) {
