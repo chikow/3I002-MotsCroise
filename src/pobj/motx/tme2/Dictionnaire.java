@@ -1,7 +1,11 @@
 package pobj.motx.tme2;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * Un ensemble de mots.
@@ -80,5 +84,18 @@ public class Dictionnaire {
 			return "Dico size =" + size();
 		}
 	}
+	
+	public static Dictionnaire loadDictionnaire(String path) {
+		Dictionnaire dico = new Dictionnaire();
+		try (Stream<String> s = Files.lines(Paths.get(path))){
+			s.forEach(dico::add);
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		return dico;
+	}
+	
+	
 
 }

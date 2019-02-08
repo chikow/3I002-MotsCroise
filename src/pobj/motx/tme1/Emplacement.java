@@ -49,5 +49,9 @@ public class Emplacement {
 		lettres.add(cases);
 
 	}
+	
+	public List<Case> getCase() {
+		return this.lettres;
+	}
 
 }
