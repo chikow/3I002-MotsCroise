@@ -75,6 +75,18 @@ public class Dictionnaire {
 		mots = cible;
 		return cpt;
 	}
+	public int filtreParLettre(char c, int i) {
+		int cpt=0;
+		List<String> cible = new ArrayList<>();
+		for(String mot : mots) {
+			if (mot.charAt(i)==c) {
+				cible.add(mot);
+			}else 
+				cpt++;
+		}
+		mots=cible;
+		return cpt;
+	}
 
 	@Override
 	public String toString() {
@@ -95,6 +107,54 @@ public class Dictionnaire {
 		}
 		return dico;
 	}
+
+	/**
+	 * @param i
+	 * @return
+	 */
+	public EnsembleLettre charAt(int i) {
+		EnsembleLettre ens = new EnsembleLettre();
+		for (String mot : mots) {
+			ens.add(mot.charAt(i));
+		}
+		return ens;
+	}
+
+	/**
+	 * @param s
+	 * @param i
+	 * @return
+	 */
+	public int filtreParLettre(EnsembleLettre s, int i) {
+		// TODO Auto-generated method stub
+		List<String> cible = new ArrayList<>();
+		int cpt = 0;
+		for (String mot : mots) {
+			char c = mot.charAt(i);
+			if (s.contains(c)) {
+				cible.add(mot);
+			} else {
+				cpt++;
+			}
+		}
+		mots = cible;
+		return cpt;
+	}
+	
+	public int filterParEnsembleDeLettrePo(int i, EnsembleLettre ensembleLettre) {
+		int cpt = 0;
+		List<String> cible = new ArrayList<>();
+		for (String mot : this.mots) {
+			if (ensembleLettre.contains(mot.charAt(i))) {
+				cible.add(mot);
+			} else
+				cpt++;
+		}
+		mots = cible;
+		return cpt;
+	}
+
+	
 	
 	
 

@@ -3,6 +3,8 @@ package pobj.motx.tme1;
 import java.util.ArrayList;
 import java.util.List;
 
+import pobj.motx.tme2.Dictionnaire;
+
 /**
  * @author LAOUER Walid
  *
@@ -92,6 +94,19 @@ public class GrillePlaces {
 		}
 		if (e.size() > 1)
 			places.add(e);
+	}
+	
+	public GrillePlaces fixer(int m, String soluce) {
+		Grille newGrille=g.copy();
+		List<Case> cases = this.getPlaces().get(m).getCase();
+		int i=0;
+		for (Case ele : cases){
+			char lettre=soluce.charAt(i);
+			newGrille.getCase(ele.getLig(), ele.getCol()).setChar(lettre);
+			i++;
+		}
+		GrillePlaces newGp=new GrillePlaces (newGrille);
+		return newGp;
 	}
 
 }

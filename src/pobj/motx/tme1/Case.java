@@ -69,6 +69,13 @@ public class Case {
 			return false;
 	}
 	
+	public boolean sameCase(Case b){
+		if(lig == b.lig && col == b.col){
+			return true;
+		}
+		return false;
+	}
+	
 	
 
 }
