@@ -20,37 +20,44 @@ public class GrillePotentiel {
 	private Dictionnaire  dico;
 	private List<Dictionnaire> motsPot;
 	private List<IContrainte> contraintes;
-	
+
 	public GrillePotentiel(GrillePlaces grille , Dictionnaire dicoComplet) {
 		this.GP=grille;
 		this.dico=dicoComplet.copy();
 		motsPot = new ArrayList<Dictionnaire>();
 		contraintes = new ArrayList<>();
-		for (Emplacement emplacement : grille.getPlaces()) {
-			Dictionnaire dico = dicoComplet.copy();
-			dico.filtreLongueur(emplacement.size());
-			int i = 0;
-			for (Case c : emplacement.getCase()) {
-				if (!(c.isPleine() || c.isVide())) {
-					dico.filtreParLettre(c.getChar(), i);
-				}
-				i++;
-			}	
-			motsPot.add(dico);
-		}	
-		//contrainte(GP);
+
+		filtrer(GP,dico);
 		checkContrainte();
+		propage();
 	}
 	
+	public void filtrer(GrillePlaces grille , Dictionnaire dicoComplet) {
+		Dictionnaire copie;
+		for(Emplacement e:GP.getPlaces())
+		{
+			copie=dicoComplet.copy();
+			copie.filtreLongueur(e.size());
+			for(int i=0;i<e.size();i++)
+			{
+				if(!(e.getCase(i).isPleine())&&!(e.getCase(i).isVide()))
+				{
+					copie.filtreParLettre(e.getCase(i).getChar(),i);
+				}
+			}
+			motsPot.add(copie);
+		}
+	}
+
 
 	public boolean isDead() {
-		boolean b = false;
-		for (Dictionnaire dictionnaire : motsPot) {
-			if(dico.size() == 0) {
-				return true;
+		
+			for(Dictionnaire d:motsPot)
+			{
+				if(d.size()==0)
+					return true;
 			}
-		}
-		return b;
+			return false;
 	}
 
 	/**
@@ -60,28 +67,60 @@ public class GrillePotentiel {
 		// TODO Auto-generated method stub
 		return motsPot;
 	}
-	
+
 	public GrillePotentiel fixer(int m, String soluce) {
-		
+
 		return new GrillePotentiel(GP.fixer(m, soluce), dico);
 	}
 
 	public List<IContrainte> getContraintes() {
 		return contraintes;
 	}
-	
-	
-	  public void checkContrainte(){ 
-		  IContrainte retour = null;
-		  for( int i = 0 ; i< GP.getNbHorizontal() ; i++ ){ 
-			  for( int j = GP.getNbHorizontal() ; j <
-				  GP.getPlaces().size() ; j++ ){ retour = GP.getPlaces().get(i).intersection(GP.getPlaces().get(j) , i , j ); 
-				  if( retour != null )
-					  contraintes.add(retour);
-				  } 
-			  } 
-		  }
-	 
 
+
+	public void checkContrainte(){ 
+		int m1=0;
+		for(Emplacement e1:GP.getPlaces())
+		{
+			int m2=0;
+			for(Emplacement e2:GP.getPlaces())
+			{
+				if(e1.isHorizontal()&& e2.isVertical())
+				{
+					for(int c1=0;c1<e1.size();c1++)
+					{
+						for(int c2=0;c2<e2.size();c2++)
+						{
+							if((e1.getCase(c1)==e2.getCase(c2))&&(e1.getCase(c1).isVide()))
+							{
+								contraintes.add(new CroixContrainte(m1,c1,m2,c2));
+							}
+						}
+					}
+				}
+				m2++;
+			}
+			m1++;}
+	}
+	private boolean propage()
+	{
+		while(true)
+		{
+			int cpt=0;
+			for(IContrainte ic: contraintes)
+			{
+				cpt=cpt+ic.reduce(this);
+			}
+			if(this.isDead())
+			{
+				return false;
+			}
+			if(cpt==0)
+			{
+				return true;
+			}
+		}
+
+
+	}
 }
-

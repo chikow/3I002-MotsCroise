@@ -114,13 +114,15 @@ public class GrillePotentielTest6 {
 
 		assertEquals(20, gr.nbCol());
 		assertEquals(20, gr.nbLig());
+		System.out.println(gr.nbCol());
+		System.out.println(gr.nbLig());
 
 		// System.out.println(gr);
 
 		GrillePlaces grille = new GrillePlaces(gr);
 
 		GrillePotentiel gp = new GrillePotentiel(grille, gut);
-
+		System.out.println(gp.isDead());
 		// System.out.println(gp);
 
 		assertTrue(gp.isDead());
