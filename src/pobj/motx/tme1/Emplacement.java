@@ -88,5 +88,14 @@ public class Emplacement {
 	public Case getCase(int n){
 		return lettres.get(n);
 	}
+	
+	public boolean caseVide(){
+		for(int i = 0 ; i<lettres.size() ; i++){
+			if(lettres.get(i).isVide() == true){
+				return true;
+			}
+		}
+		return false;
+	}
 
 }

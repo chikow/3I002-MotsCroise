@@ -9,8 +9,9 @@ import pobj.motx.tme1.GrilleLoader;
 import pobj.motx.tme1.GrillePlaces;
 import pobj.motx.tme2.Dictionnaire;
 import pobj.motx.tme2.GrillePotentiel;
-import pobj.motx.tme3.adapt.MotX;
-import pobj.motx.tme3.csp.CSPSolverCorrige;
+import pobj.motx.tme3.MotX;
+import pobj.motx.tme3.csp.CSPSolver;
+
 import pobj.motx.tme3.csp.ICSP;
 
 public class GrilleSolverTest {
@@ -29,7 +30,7 @@ public class GrilleSolverTest {
 		// assertTrue(! gp.isDead());
 
 		ICSP problem = new MotX(gp);
-		CSPSolverCorrige solver = new CSPSolverCorrige();
+		CSPSolver solver = new CSPSolver();
 
 		// solver.setStrat(new StratFirst());
 		// solver.setStrat(new StratMin());

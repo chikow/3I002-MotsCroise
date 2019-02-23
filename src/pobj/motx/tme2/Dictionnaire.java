@@ -154,6 +154,10 @@ public class Dictionnaire {
 		return cpt;
 	}
 
+	public List<String> getMots() {
+		return mots;
+	}
+
 	
 	
 	

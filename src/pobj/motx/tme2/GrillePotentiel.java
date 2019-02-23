@@ -16,6 +16,7 @@ import pobj.motx.tme1.GrillePlaces;
  *
  */
 public class GrillePotentiel {
+
 	private GrillePlaces GP; 
 	private Dictionnaire  dico;
 	private List<Dictionnaire> motsPot;
@@ -31,6 +32,8 @@ public class GrillePotentiel {
 		checkContrainte();
 		propage();
 	}
+	
+	
 	
 	public void filtrer(GrillePlaces grille , Dictionnaire dicoComplet) {
 		Dictionnaire copie;
@@ -120,7 +123,9 @@ public class GrillePotentiel {
 				return true;
 			}
 		}
-
-
+	}
+	
+	public GrillePlaces getGP() {
+		return GP;
 	}
 }
